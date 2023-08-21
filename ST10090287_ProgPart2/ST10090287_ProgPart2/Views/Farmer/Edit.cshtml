@@ -1,0 +1,117 @@
+﻿@model ST10090287_ProgPart2.Models.Farmers
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .col-md-4 {
+        width: 33.33%;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .edit-heading {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .farmers-heading {
+        font-size: 18px;
+        font-weight: bold;
+        color: #555;
+        margin-top: 0;
+    }
+
+</style>
+<h1 class="edit-heading">EDIT FARMER DETAILS</h1>
+<h4 class="farmers-heading">FARMERS</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FARMER_ID" class="control-label"></label>
+                <input asp-for="FARMER_ID" name="txtID"class="form-control" readonly/>
+                <span asp-validation-for="FARMER_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FARMER_NAME" class="control-label"></label>
+                <input asp-for="FARMER_NAME"name="txtName" class="form-control" />
+                <span asp-validation-for="FARMER_NAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FARMER_SURNAME" class="control-label"></label>
+                <input asp-for="FARMER_SURNAME"name="txtSurname" class="form-control" />
+                <span asp-validation-for="FARMER_SURNAME" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FARMER_EMAIL" class="control-label"></label>
+                <input asp-for="FARMER_EMAIL"name="txtEmail" class="form-control" />
+                <span asp-validation-for="FARMER_EMAIL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FARMER_PASSWORD" class="control-label"></label>
+                <input asp-for="FARMER_PASSWORD"name="txtPassword" class="form-control" />
+                <span asp-validation-for="FARMER_PASSWORD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

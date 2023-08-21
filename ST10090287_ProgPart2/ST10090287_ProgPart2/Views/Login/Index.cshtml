@@ -1,0 +1,107 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    h1 {
+        text-align: center;
+        color: blue;
+        font-size: 50px;
+    }
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: .75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+
+        .input-group .btn {
+            border-radius: 4px 0 0 4px;
+            height: 38px;
+        }
+
+        .input-group .form-control {
+            border-radius: 0 4px 4px 0;
+            flex-grow: 1;
+        }
+
+    .button-container {
+        text-align: center;
+    }
+</style>
+
+<h1>Login</h1>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <div class="input-group">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "email" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-group">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control", id = "password" })
+            <button type="button" class="btn btn-outline-secondary" onclick="togglePasswordVisibility()">
+                <i id="passwordIcon" class="fas fa-eye-slash"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+}
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var passwordIcon = document.getElementById("passwordIcon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
+        }
+    }
+</script>

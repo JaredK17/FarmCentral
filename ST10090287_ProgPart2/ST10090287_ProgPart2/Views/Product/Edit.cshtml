@@ -1,0 +1,111 @@
+﻿@model ST10090287_ProgPart2.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .col-md-4 {
+        width: 33.33%;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .control-label {
+        display: block;
+        font-weight: bold;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 8px 12px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .text-danger {
+        color: #dc3545;
+    }
+
+    .edit-heading {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+</style>
+
+<h1>Edit</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PRODUCT_ID" class="control-label"></label>
+                <input asp-for="PRODUCT_ID" name="txtPRODUCT_ID" class="form-control" readonly />
+                <span asp-validation-for="PRODUCT_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PRODUCT_TYPE" class="control-label"></label>
+                <input asp-for="PRODUCT_TYPE" name="txtPRODUCT_TYPE" class="form-control" />
+                <span asp-validation-for="PRODUCT_TYPE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PRODUCT_PRICE" class="control-label"></label>
+                <input asp-for="PRODUCT_PRICE" name="txtPRODUCT_PRICE" class="form-control" />
+                <span asp-validation-for="PRODUCT_PRICE" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PRODUCT_QTY" class="control-label"></label>
+                <input asp-for="PRODUCT_QTY" name="txtPRODUCT_QTY" class="form-control" />
+                <span asp-validation-for="PRODUCT_QTY" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FARMER_ID" class="control-label"></label>
+                <input asp-for="FARMER_ID" name="txtFARMER_ID" class="form-control" />
+                <span asp-validation-for="FARMER_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

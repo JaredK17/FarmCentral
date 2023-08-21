@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ST10090287_ProgPart2.Models.Product>
+
+@{
+    ViewData["Title"] = "ProductsPage";
+}
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .table thead th {
+            background-color: grey;
+            font-weight: bold;
+        }
+
+        .table tbody td {
+            text-align: center;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9e9e9;
+        }
+
+        .table a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+    .filter-container {
+        margin-bottom: 10px;
+    }
+</style>
+<h1>ProductsPage</h1>
+
+<label for="filter" style="color: blue; font-weight: bold;">Filter by Product Type:</label>
+<input type="text" id="filter" style="width: 200px; padding: 5px;">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCT_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCT_TYPE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCT_PRICE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRODUCT_QTY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FARMER_ID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_TYPE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_PRICE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRODUCT_QTY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FARMER_ID)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    document.getElementById('filter').addEventListener('input', function () {
+        var filterValue = this.value.trim().toUpperCase();
+        var table = document.querySelector('.table');
+        var rows = table.querySelectorAll('tbody tr');
+
+        rows.forEach(function (row) {
+            var productType = row.querySelector('td:nth-child(2)').textContent.toUpperCase();
+
+            if (productType.includes(filterValue)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+</script>

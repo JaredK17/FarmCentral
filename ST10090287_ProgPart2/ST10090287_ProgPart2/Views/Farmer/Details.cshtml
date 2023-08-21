@@ -1,0 +1,78 @@
+﻿@model ST10090287_ProgPart2.Models.Farmers
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    .col-sm-2,
+    .col-sm-10 {
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .col-sm-2 {
+        width: 20%;
+    }
+
+    .col-sm-10 {
+        width: 80%;
+    }
+
+    .details-heading {
+        color: #333;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+</style>
+
+
+<h1 class="details-heading">Details</h1>
+
+<div>
+    <h4>Farmers</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FARMER_ID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FARMER_ID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FARMER_NAME)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FARMER_NAME)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FARMER_SURNAME)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FARMER_SURNAME)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FARMER_EMAIL)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FARMER_EMAIL)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FARMER_PASSWORD)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FARMER_PASSWORD)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    <a href="@Url.Action("Index")" class="btn btn-primary">Back to List</a>
+</div>

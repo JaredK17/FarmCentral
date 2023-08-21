@@ -1,0 +1,1 @@
+﻿delete from PRODUCTS where PRODUCT_ID = 'prod2';
